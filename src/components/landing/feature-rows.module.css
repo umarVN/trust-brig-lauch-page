@@ -1,0 +1,142 @@
+/*
+ * Four feature cards in a row. Kept distinct from "How escrow works" — which
+ * uses a small circular badge straddling a card's top edge over centred copy on
+ * a tinted band — by putting the mark on a large tinted plate, numbering the
+ * cards down the left, and letting the selected card reveal what it guarantees.
+ */
+
+.section {
+  padding-block: 44px;
+  scroll-margin-top: calc(var(--tb-header-offset) + 16px);
+}
+
+.head {
+  max-width: 620px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.lede {
+  max-width: 52ch;
+  margin: 14px auto 0;
+  color: var(--tb-ink-dim);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+  list-style: none;
+}
+
+/* Static content card — nothing here is interactive. */
+.card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 18px 18px 20px;
+  border: 1px solid var(--tb-line);
+  border-radius: 18px;
+  background: var(--tb-surface-card);
+  box-shadow: var(--tb-shadow-card);
+  text-align: left;
+}
+
+/* ---------- mark ---------- */
+
+.plate {
+  display: grid;
+  height: 118px;
+  place-items: center;
+  border-radius: 12px;
+  background:
+    radial-gradient(80% 80% at 50% 15%, rgb(var(--tb-accent) / 0.1), transparent 72%),
+    var(--tb-fill-1);
+}
+
+.plate svg {
+  width: 38px;
+  height: 38px;
+  color: var(--tb-cyan);
+}
+
+/* ---------- copy ---------- */
+
+.number {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: var(--tb-fill-3);
+  color: var(--tb-ink-dim);
+  font-size: 11px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--tb-strong);
+}
+
+.body {
+  margin-top: 7px;
+  color: var(--tb-mute);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Shown on every card. */
+.guarantee {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 14px;
+  color: var(--tb-cyan);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.guarantee svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: 36px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .plate {
+    height: 96px;
+  }
+  .plate svg {
+    width: 32px;
+    height: 32px;
+  }
+}

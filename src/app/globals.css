@@ -1,0 +1,1162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root font scaling so rem-based type keeps its optical size on very large screens. */
+@media (min-width: 2560px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 3840px) {
+  :root {
+    font-size: 20px;
+  }
+}
+
+@layer base {
+  :root {
+    /* Page canvas — mirrored by CANVAS in app/layout.tsx for the theme-color tag. */
+    --tb-canvas: #F6F9FE;
+    --background: 220 75% 98%;
+    --foreground: #1A2634;
+    --card: 0 0% 100%;
+    --card-foreground: 220 54% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --surface: 0 0% 100%;
+    --surface-muted: 220 75% 98%;
+    --primary: #084A86;
+    --primary-foreground: 0 0% 100%;
+    /* Hue-constant OKLCH ramp; #084A86 is primary-700 exactly. */
+    --primary-50: 212.3 76.5% 96.7%;
+    --primary-100: 213.3 73.0% 92.7%;
+    --primary-200: 211.8 71.0% 86.5%;
+    --primary-300: 211.9 69.4% 78.2%;
+    --primary-400: 212.0 63.2% 68.0%;
+    --primary-500: 211.7 54.3% 56.3%;
+    --primary-600: 210.5 59.4% 41.6%;
+    --primary-700: 208.6 88.7% 27.8%;
+    --primary-800: 209.4 100.0% 21.2%;
+    --primary-900: 210.8 100.0% 15.7%;
+    --secondary: 197.3 86.8% 41.6%;
+    --secondary-foreground: 0 0% 100%;
+    /* Hue-constant OKLCH ramp; #0E91C6 is secondary-500 exactly. */
+    --secondary-50: 202.5 88.9% 96.5%;
+    --secondary-100: 202.5 80.0% 92.2%;
+    --secondary-200: 202.4 80.8% 85.7%;
+    --secondary-300: 202.1 79.8% 76.7%;
+    --secondary-400: 200.8 69.6% 62.5%;
+    --secondary-500: 197.3 86.8% 41.6%;
+    --secondary-600: 199.1 100.0% 33.9%;
+    --secondary-700: 201.5 100.0% 28.4%;
+    --secondary-800: 203.6 100.0% 22.9%;
+    --secondary-900: 204.8 100.0% 17.1%;
+    --muted: 212 45% 94%;
+    --muted-foreground: #4B5565;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --danger-solid: 0 84% 60%;
+    --danger-solid-hover: 0 72% 51%;
+    --border: 212 45% 94%;
+    --input: 214 40% 92%;
+    --ring: 204 100% 29%;
+    --radius: 0.5rem;
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    --success-50: 138 76% 97%;
+    --success-100: 141 84% 93%;
+    --success-200: 141 79% 85%;
+    --success-300: 142 77% 73%;
+    --success-400: 142 69% 58%;
+    --success-500: 142 76% 36%;
+    --success-600: 142 76% 36.3%;
+    --success-700: 142 72% 29%;
+    --success-800: 143 64% 24%;
+    --success-900: 144 61% 20%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+    --warning-50: 48 100% 96%;
+    --warning-100: 48 96% 89%;
+    --warning-200: 48 97% 77%;
+    --warning-300: 46 97% 65%;
+    --warning-400: 43 96% 56%;
+    --warning-500: 38 92% 50%;
+    --warning-600: 32 95% 44%;
+    --warning-700: 26 90% 37%;
+    --warning-800: 23 83% 31%;
+    --warning-900: 22 78% 26%;
+    --error: 0 84.2% 60.2%;
+    --error-foreground: 210 40% 98%;
+    --error-50: 0 86% 97%;
+    --error-100: 0 93% 94%;
+    --error-200: 0 96% 89%;
+    --error-300: 0 94% 82%;
+    --error-400: 0 91% 71%;
+    --error-500: 0 84% 60%;
+    --error-600: 0 84.2% 60.2%;
+    --error-700: 0 72% 51%;
+    --error-800: 0 70% 45%;
+    --error-900: 0 63% 31%;
+    --brand-button: #09101E;
+    --brand-button-hover: #0E91C6;
+    --control-height: 51px;
+    --control-radius: 5px;
+
+    --auth-input-height: 48px;
+    --auth-input-radius: 8px;
+    --auth-input-padding-x: 16px;
+    --auth-input-font-size: 14px;
+    --auth-label-size: 18px;
+    --auth-label-font-weight: 500;
+    --auth-button-height: 48px;
+    --auth-button-font-size: 16px;
+    --auth-field-gap: 8px;
+    --auth-field-stack-gap: 16px;
+  }
+
+  .dark {
+    --tb-canvas: #0A111F;
+    --background: 220 51% 8%;
+    --foreground: 210 40% 98%;
+    --card: 212 36% 13%;
+    --card-foreground: 210 40% 98%;
+    --popover: 212 36% 13%;
+    --popover-foreground: 210 40% 98%;
+    --surface: 220 51% 8%;
+    --surface-muted: 214 38% 12%;
+    --primary: #084A86;
+    --primary-foreground: 0 0% 100%;
+    --primary-50: 210.8 100.0% 15.7%;
+    --primary-100: 209.4 100.0% 21.2%;
+    --primary-200: 208.6 88.7% 27.8%;
+    --primary-300: 210.5 59.4% 41.6%;
+    --primary-400: 211.7 54.3% 56.3%;
+    --primary-500: 212.0 63.2% 68.0%;
+    --primary-600: 211.9 69.4% 78.2%;
+    --primary-700: 211.8 71.0% 86.5%;
+    --primary-800: 213.3 73.0% 92.7%;
+    --primary-900: 212.3 76.5% 96.7%;
+    --secondary: 200.8 69.6% 62.5%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-50: 204.8 100.0% 17.1%;
+    --secondary-100: 203.6 100.0% 22.9%;
+    --secondary-200: 201.5 100.0% 28.4%;
+    --secondary-300: 199.1 100.0% 33.9%;
+    --secondary-400: 197.3 86.8% 41.6%;
+    --secondary-500: 200.8 69.6% 62.5%;
+    --secondary-600: 202.1 79.8% 76.7%;
+    --secondary-700: 202.4 80.8% 85.7%;
+    --secondary-800: 202.5 80.0% 92.2%;
+    --secondary-900: 202.5 88.9% 96.5%;
+    --muted: 213 32% 12%;
+    --muted-foreground: 213 13% 70%;
+    --accent: 214 35% 13%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 212 27% 20%;
+    --input: 214 42% 11%;
+    --ring: 197 86% 42%;
+    --success: 143 68% 39%;
+    --success-foreground: 0 0% 100%;
+    --success-50: 144 61% 20%;
+    --success-100: 143 64% 24%;
+    --success-200: 142 72% 29%;
+    --success-300: 142 76% 36.3%;
+    --success-400: 142 69% 58%;
+    --success-500: 142.1 70.6% 45.3%;
+    --success-600: 142 77% 73%;
+    --success-700: 141 79% 85%;
+    --success-800: 141 84% 93%;
+    --success-900: 138 76% 97%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+    --warning-50: 22 78% 26%;
+    --warning-100: 23 83% 31%;
+    --warning-200: 26 90% 37%;
+    --warning-300: 32 95% 44%;
+    --warning-400: 38 92% 50%;
+    --warning-500: 38 92% 50%;
+    --warning-600: 43 96% 56%;
+    --warning-700: 46 97% 65%;
+    --warning-800: 48 97% 77%;
+    --warning-900: 48 96% 89%;
+    --error: 0 72.2% 50.6%;
+    --error-foreground: 210 40% 98%;
+    --error-50: 0 63% 31%;
+    --error-100: 0 70% 45%;
+    --error-200: 0 72% 51%;
+    --error-300: 0 72.2% 50.6%;
+    --error-400: 0 91% 71%;
+    --error-500: 0 84% 60%;
+    --error-600: 0 94% 82%;
+    --error-700: 0 96% 89%;
+    --error-800: 0 93% 94%;
+    --error-900: 0 86% 97%;
+    --brand-button: #0E91C6;
+    --brand-button-hover: #00A1E6;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--placeholder);
+    opacity: 1;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family:
+      var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      Roboto, sans-serif;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
+
+/* Fluid page gutters and section rhythm, matching the app shell. */
+:root {
+  --page-gutter: 20px;
+  --header-height: 56px;
+  --section-gap: 1.25rem;
+  --section-heading-gap: 1.25rem;
+  --page-block-gap: 1.25rem;
+  --page-shell-max: 2000px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-gutter: 24px;
+    --header-height: 64px;
+    --section-gap: 2rem;
+    --page-block-gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 40px;
+    --header-height: 72px;
+    --section-gap: 3rem;
+    --section-heading-gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --page-gutter: 48px;
+    --header-height: 76px;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --page-gutter: 56px;
+    --header-height: 84px;
+  }
+}
+
+@media (min-width: 1536px) and (min-height: 800px) {
+  :root,
+  .dark {
+    --auth-input-height: 56px;
+    --auth-input-padding-x: 20px;
+    --auth-input-font-size: 16px;
+    --auth-button-height: 56px;
+    --auth-button-font-size: 18px;
+    --auth-label-size: 20px;
+    --auth-field-gap: 10px;
+    --auth-field-stack-gap: 20px;
+  }
+}
+
+@media (min-width: 2560px) and (min-height: 1200px),
+  (min-width: 1800px) and (min-height: 900px) and (min-resolution: 1.5dppx) {
+  :root,
+  .dark {
+    --auth-input-height: 72px;
+    --auth-input-radius: 12px;
+    --auth-input-padding-x: 28px;
+    --auth-input-font-size: 20px;
+    --auth-button-height: 72px;
+    --auth-button-font-size: 22px;
+    --auth-label-size: 24px;
+    --auth-field-gap: 14px;
+    --auth-field-stack-gap: 28px;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-muted-foreground/20;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/40;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgb(var(--tb-tint) / 0.08), transparent),
+    radial-gradient(ellipse 60% 30% at 80% 50%, rgb(var(--tb-accent) / 0.05), transparent),
+    radial-gradient(ellipse 60% 30% at 20% 50%, rgb(var(--tb-brand) / 0.04), transparent);
+}
+
+.dark .hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgb(var(--tb-tint) / 0.2), transparent),
+    radial-gradient(ellipse 60% 30% at 80% 50%, rgb(var(--tb-accent) / 0.15), transparent),
+    radial-gradient(ellipse 60% 30% at 20% 50%, rgb(var(--tb-brand) / 0.1), transparent);
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+}
+
+.shadow-lg {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.dark .shadow-lg {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.4),
+    0 4px 6px -4px rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-xl {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+.dark .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+}
+
+[aria-invalid="true"] {
+  border-color: hsl(var(--error-500)) !important;
+}
+
+[aria-invalid="true"]:focus,
+[aria-invalid="true"]:focus-visible,
+[aria-invalid="true"]:focus-within {
+  --tw-ring-color: hsl(var(--error-500)) !important;
+  border-color: hsl(var(--error-500)) !important;
+  box-shadow: 0 0 0 1px hsl(var(--error-500)) !important;
+  outline: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================================
+ * TrustBrig OS — landing experience layer
+ * "The operating system for secure global transactions."
+ *
+ * Scoped to `.tb`, which carries a complete semantic token set so the whole
+ * experience can be rendered light or dark from one place:
+ *
+ *   .tb            → light canvas (default)
+ *   .dark .tb      → cinematic dark canvas (next-themes sets `.dark` on html)
+ *   .tb-invert     → always dark, whatever the page theme (the security slab
+ *                    and the industry stage stay dark in both themes)
+ *
+ * Components must never hardcode a colour: use --tb-strong for primary text,
+ * --tb-fill-1/2/3 for raised surfaces and --tb-invert-bg/fg for solid CTAs.
+ * ========================================================================= */
+
+.tb {
+  /* ---- brand source of truth ----
+   * Every decorative colour on the page resolves back to these channels. The
+   * page carries ONE blue — #0E91C6, the logo's — so nothing on it reads as a
+   * different shade of the brand. The deep #084A86 survives only in the logo
+   * asset and in the product ramp (--primary), which the app shell mirrors.
+   * --tb-tint is whichever channel hairlines and fills are tinted with on this
+   * canvas; --tb-accent is the luminous one. Both flip in dark mode, so no
+   * rule below needs a light/dark variant of its own. */
+  --tb-brand: 14 145 198;
+  --tb-tint: 14 145 198;
+  --tb-accent: 14 145 198;
+  --tb-scrim: 4 7 14;
+
+  /* ---- light canvas ---- */
+  --tb-bg: #f6f9fe;
+  --tb-line: rgb(var(--tb-tint) / 0.14);
+  --tb-line-strong: rgb(var(--tb-tint) / 0.3);
+
+  /* TrustBrig blue identity, taken off the ramp rather than hand-mixed */
+  --tb-primary: rgb(var(--tb-brand));
+  --tb-blue: #0e91c6;
+  --tb-cyan: #0e91c6;
+  --tb-glow: rgb(var(--tb-accent));
+
+  /* Status carries meaning, so it stays legible against the brand blues */
+  --tb-mint: #107e59;
+  --tb-amber: #f78f2e;
+  --tb-danger: #dc2626;
+
+  --tb-ink: #1a2634;
+  --tb-ink-dim: #4b5565;
+  --tb-mute: #6b7280;
+  --tb-strong: #1a2634;
+
+  /* The permanently dark slab used by the security and industry sections */
+  --tb-ground: #0a111f;
+
+  /* Raised surfaces, in ascending prominence */
+  --tb-fill-1: rgb(var(--tb-tint) / 0.035);
+  --tb-fill-2: rgb(var(--tb-tint) / 0.062);
+  --tb-fill-3: rgb(var(--tb-tint) / 0.1);
+  --tb-chrome: rgb(var(--tb-tint) / 0.055);
+
+  /* Solid CTA — inverted against the canvas */
+  --tb-surface-card: #ffffff;
+  --tb-shadow-card: 0 1px 2px rgb(var(--tb-tint) / 0.06), 0 12px 32px -18px rgb(var(--tb-tint) / 0.28);
+
+  --tb-invert-bg: #09101e;
+  --tb-invert-fg: #ffffff;
+
+  /* ---- action buttons ----
+   * Mirrored 1:1 from the product shell (trustbrig-frontend --brand-button /
+   * --brand-button-hover) so a visitor crossing from the landing page into
+   * the app never sees the primary control change colour under them. */
+  --tb-btn-bg: var(--brand-button);
+  --tb-btn-bg-hover: var(--brand-button-hover);
+  --tb-btn-fg: #ffffff;
+
+  /* Secondary control = the app's `soft` appearance: surface + hairline. */
+  --tb-btn-soft-bg: #ffffff;
+  --tb-btn-soft-bg-hover: #e9eff7;
+  --tb-btn-soft-fg: var(--tb-strong);
+
+  --tb-btn-radius: 10px;
+
+  --tb-glass-a: rgba(255, 255, 255, 0.92);
+  --tb-glass-b: rgba(255, 255, 255, 0.72);
+  --tb-glass-c: rgba(255, 255, 255, 0.6);
+  --tb-glass-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  --tb-glass-shadow: 0 24px 60px -34px rgba(10, 34, 66, 0.45);
+
+  --tb-grad-1: #1a2634;
+  --tb-grad-2: #0e91c6;
+  --tb-grad-3: rgb(var(--tb-accent));
+
+  --tb-grid-line: rgb(var(--tb-tint) / 0.075);
+  --tb-node-hi: rgb(var(--tb-tint) / 0.09);
+  --tb-node-lo: rgb(var(--tb-tint) / 0.02);
+  --tb-scrollbar: rgb(var(--tb-tint) / 0.24);
+  --tb-selection: rgb(var(--tb-accent) / 0.22);
+
+  /* Data-visualisation strokes: hero mesh and the corridor map */
+  --tb-mesh-line: rgb(var(--tb-tint) / 0.16);
+  --tb-mesh-node: rgb(var(--tb-accent) / 0.16);
+  --tb-mesh-core: rgb(var(--tb-brand) / 0.6);
+  --tb-map-dot: rgb(var(--tb-tint) / 0.32);
+  --tb-map-line: rgb(var(--tb-tint) / 0.26);
+  --tb-map-grid: rgb(var(--tb-tint) / 0.07);
+
+  /* Shared glows, so no component re-encodes the accent as a literal rgba */
+  --tb-glow-shadow: 0 18px 50px -18px rgb(var(--tb-accent) / 0.7);
+  --tb-glow-shadow-sm: 0 0 12px rgb(var(--tb-accent) / 0.6);
+  --tb-glow-spot: rgb(var(--tb-accent) / 0.14);
+  --tb-glow-glare: rgb(var(--tb-accent) / 0.18);
+  --tb-glow-faint: rgb(var(--tb-accent) / 0.06);
+  --tb-shadow-lift: 0 10px 30px -12px rgb(var(--tb-scrim) / 0.5);
+
+  --tb-aurora-bg:
+    radial-gradient(58% 46% at 18% 8%, rgb(var(--tb-tint) / 0.16), transparent 62%),
+    radial-gradient(48% 44% at 84% 14%, rgb(var(--tb-accent) / 0.13), transparent 64%),
+    radial-gradient(70% 60% at 50% 106%, rgb(var(--tb-brand) / 0.16), transparent 70%);
+
+  /* Vertical space the floating header occupies. Anything pinned to the top of
+   * the viewport must clear it. Mirrored by HEADER_OFFSET in smooth-scroll.tsx. */
+  --tb-header-offset: 116px;
+
+  --tb-shell: min(1200px, 100% - 2.5rem);
+
+  background: var(--tb-bg);
+  color: var(--tb-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- cinematic dark canvas (page theme, or a locally inverted block) ---- */
+.dark .tb,
+.tb-invert {
+  /* The tint and accent channels move up the ramp so hairlines and glows read
+   * on a near-black ground; every rule below inherits the change. */
+  --tb-tint: 161 197 238;
+  --tb-accent: 122 183 232;
+
+  --tb-bg: #0a111f;
+  --tb-line: rgb(var(--tb-tint) / 0.13);
+  --tb-line-strong: rgb(var(--tb-tint) / 0.3);
+
+  --tb-primary: rgb(var(--tb-brand));
+  --tb-blue: #0e91c6;
+  --tb-cyan: #0e91c6;
+  --tb-glow: rgb(var(--tb-accent));
+
+  --tb-mint: #34d399;
+  --tb-amber: #fdba74;
+  --tb-danger: #f87171;
+
+  --tb-ink: #e8edf2;
+  --tb-ink-dim: #9ca3af;
+  /* Dim meta text: eyebrows, captions, placeholders, the privacy note.
+   * #6b7280 came over from the app shell, where it is only ever a
+   * placeholder colour; carrying that broader role on a near-black canvas
+   * measured 3.9:1, under the 4.5:1 floor. This clears AA on both the page
+   * ground and the lighter glass panels while staying a step below
+   * --tb-ink-dim. */
+  --tb-mute: #8a95a6;
+  --tb-strong: #ffffff;
+
+  --tb-fill-1: rgba(255, 255, 255, 0.028);
+  --tb-fill-2: rgba(255, 255, 255, 0.06);
+  --tb-fill-3: rgba(255, 255, 255, 0.09);
+  --tb-chrome: rgba(0, 0, 0, 0.3);
+
+  --tb-surface-card: rgba(255, 255, 255, 0.045);
+  --tb-shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 14px 34px -20px rgb(0 0 0 / 0.75);
+
+  --tb-invert-bg: #ffffff;
+  --tb-invert-fg: #04070e;
+
+  /* Dark shell swaps the brand button to the secondary channel — same as the
+   * product's own .dark block. */
+  /* .tb-invert is a dark slab on a light page, so it must restate the shell's
+   * dark brand button rather than inherit the light one from :root. */
+  --brand-button: #0e91c6;
+  --brand-button-hover: #00a1e6;
+
+  --tb-btn-bg: var(--brand-button);
+  --tb-btn-bg-hover: var(--brand-button-hover);
+  --tb-btn-fg: #ffffff;
+
+  --tb-btn-soft-bg: #15202d;
+  --tb-btn-soft-bg-hover: #131d2a;
+  --tb-btn-soft-fg: var(--tb-strong);
+
+  --tb-glass-a: rgba(255, 255, 255, 0.07);
+  --tb-glass-b: rgba(255, 255, 255, 0.022);
+  --tb-glass-c: rgba(255, 255, 255, 0.01);
+  --tb-glass-inset: inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+  --tb-glass-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+
+  --tb-grad-1: #ffffff;
+  --tb-grad-2: #dfebfa;
+  --tb-grad-3: rgb(var(--tb-accent));
+
+  --tb-grid-line: rgb(var(--tb-tint) / 0.07);
+  --tb-node-hi: rgba(255, 255, 255, 0.14);
+  --tb-node-lo: rgba(255, 255, 255, 0.02);
+  --tb-scrollbar: rgb(var(--tb-tint) / 0.22);
+  --tb-selection: rgb(var(--tb-accent) / 0.32);
+
+  --tb-mesh-line: rgb(var(--tb-tint) / 0.22);
+  --tb-mesh-node: rgb(var(--tb-accent) / 0.16);
+  --tb-mesh-core: rgb(var(--tb-accent) / 0.85);
+  --tb-map-dot: rgb(var(--tb-tint) / 0.34);
+  --tb-map-line: rgb(var(--tb-tint) / 0.26);
+  --tb-map-grid: rgb(var(--tb-tint) / 0.07);
+
+  --tb-glow-shadow: 0 18px 50px -18px rgb(var(--tb-accent) / 0.7);
+  --tb-glow-shadow-sm: 0 0 12px rgb(var(--tb-accent) / 0.6);
+  --tb-glow-spot: rgb(var(--tb-accent) / 0.14);
+  --tb-glow-glare: rgb(var(--tb-accent) / 0.18);
+  --tb-glow-faint: rgb(var(--tb-accent) / 0.06);
+  --tb-shadow-lift: 0 10px 30px -12px rgb(var(--tb-scrim) / 0.8);
+
+  --tb-aurora-bg:
+    radial-gradient(58% 46% at 18% 8%, rgb(var(--tb-tint) / 0.42), transparent 62%),
+    radial-gradient(48% 44% at 84% 14%, rgb(var(--tb-accent) / 0.26), transparent 64%),
+    radial-gradient(70% 60% at 50% 106%, rgb(var(--tb-brand) / 0.55), transparent 70%);
+}
+
+/* An inverted block paints its own ground; the page root only paints itself. */
+.tb-invert {
+  color: var(--tb-ink);
+}
+
+@media (max-width: 640px) {
+  .tb {
+    --tb-shell: calc(100% - 2rem);
+  }
+}
+
+.tb ::selection {
+  background: var(--tb-selection);
+}
+
+.tb-shell {
+  width: var(--tb-shell);
+  margin-inline: auto;
+}
+
+.tb-section {
+  padding-block: clamp(1rem, 2.4vw, 1.75rem);
+}
+
+@layer components {
+  /* ---------- action buttons ----------
+   * Fill and hover fill are the product shell's brand button, so the primary
+   * control does not change colour when a visitor crosses from the landing page
+   * into the app. The lift, glow and icon nudge are the landing page's own and
+   * are deliberately preserved on top. */
+  .tb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 0;
+    transition:
+      background-color 200ms ease-out,
+      border-color 200ms ease-out,
+      color 200ms ease-out,
+      box-shadow 300ms ease-out,
+      transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tb-btn-brand {
+    background: var(--tb-btn-bg);
+    color: var(--tb-btn-fg);
+  }
+
+  .tb-btn-brand:hover {
+    background: var(--tb-btn-bg-hover);
+    color: var(--tb-btn-fg);
+  }
+
+  .tb-btn-soft {
+    border: 1px solid var(--tb-line-strong);
+    background: var(--tb-btn-soft-bg);
+    color: var(--tb-btn-soft-fg);
+  }
+
+  .tb-btn-soft:hover {
+    background: var(--tb-btn-soft-bg-hover);
+  }
+
+  .tb-btn:disabled {
+    opacity: 0.6;
+  }
+
+  /* Pointer devices only — a phone has no hover state to scale into, and the
+   * press feedback is the app's `active:translate-y-px`. */
+  @media (hover: hover) {
+    .tb-btn-lift:hover:not(:disabled) {
+      transform: scale(1.03);
+    }
+  }
+
+  .tb-btn-lift:active:not(:disabled) {
+    transform: scale(1) translateY(1px);
+  }
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 1023px) {
+  .tb {
+    --tb-shell: calc(100% - 2.5rem);
+  }
+
+  /* Mobile gets its own rhythm. The 80px inter-section cap is a desktop
+   * concern — applied to a phone it reads as compression, because a narrow
+   * column needs *more* vertical separation to group content, not less. */
+  .tb-section {
+    padding-block: 2.25rem;
+  }
+
+  /* Display type is set for a 1200px canvas; on a phone the same tracking
+   * reads as crowding, so it eases off as the measure narrows. */
+  .tb-display {
+    letter-spacing: 0;
+    line-height: 1.05;
+  }
+
+  .tb-display-section {
+    line-height: 1.08;
+  }
+
+  /* Body copy steps up a size — 15px is a desktop reading size held at
+   * arm's length, not a phone one. */
+  .tb-body {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .tb-eyebrow {
+    font-size: 0.8125rem;
+    letter-spacing: 0;
+  }
+
+  /* Touch targets: anything interactive clears the 44px minimum. */
+  .tb-tap {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .tb {
+    --tb-shell: calc(100% - 2rem);
+  }
+  .tb-glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Lets a rail inside .tb-shell run to the viewport edges while keeping its
+ * first and last card aligned with the shell's text column. */
+.tb-bleed {
+  margin-inline: calc((var(--tb-shell) - 100vw) / 2);
+  padding-inline: calc((100vw - var(--tb-shell)) / 2);
+}
+
+/* Momentum-scrolling rails used by the mobile carousels. */
+.tb-rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tb-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.tb-rail > * {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+}
+
+/* ---------- surfaces ---------- */
+
+.tb-glass {
+  background: linear-gradient(
+    160deg,
+    var(--tb-glass-a) 0%,
+    var(--tb-glass-b) 42%,
+    var(--tb-glass-c) 100%
+  );
+  border: 1px solid var(--tb-line);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.tb-glass-hi {
+  box-shadow: var(--tb-glass-inset), var(--tb-glass-shadow);
+}
+
+/* Hairline that fades at both ends — section rules and connector rails. */
+.tb-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tb-line-strong), transparent);
+}
+
+/* ---------- type ---------- */
+
+/* Display text uses the same Inter stack as the frontend product. */
+.tb-display {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.tb-display-section {
+  line-height: 1.06;
+  letter-spacing: 0;
+}
+
+/* ---------- rebuild: section idiom ----------
+ * The reference's signature is a tracked-OUT display face, two-tone, over calm
+ * white cards. The old page used tight negative tracking plus glass on nearly
+ * every surface, which is a large part of why it read as generated. These
+ * utilities carry the new look so sections stay consistent.
+ */
+.tb-title {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.08;
+  text-wrap: balance;
+  color: var(--tb-strong);
+}
+
+/* The accent half of a two-tone heading. Flat brand colour, not a gradient —
+ * gradient text on every heading was one of the tells. */
+.tb-title-accent {
+  color: var(--tb-cyan);
+}
+
+/* Content card: solid surface, hairline, one soft shadow. No blur, no glass. */
+.tb-panel {
+  background: var(--tb-surface-card);
+  border: 1px solid var(--tb-line);
+  border-radius: 20px;
+  box-shadow: var(--tb-shadow-card);
+}
+
+/* Pill CTA carrying a circular arrow badge, as in the reference. */
+.tb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--tb-btn-bg);
+  color: var(--tb-btn-fg);
+  transition: background-color 200ms ease-out;
+}
+
+.tb-cta:hover { background: var(--tb-btn-bg-hover); }
+
+.tb-cta__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 999px;
+  background: var(--tb-cyan);
+  color: #fff;
+}
+
+.tb-eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--tb-primary);
+}
+
+/* Every figure on the page: metrics, amounts, references, timestamps. */
+.tb-mono {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Institutional metric: a figure read off a terminal, not a marketing number. */
+.tb-figure {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1;
+  font-size: clamp(2.75rem, 4.6vw, 4.5rem);
+}
+
+/* Data label: uppercase, tracked out, deliberately small so the figure leads. */
+.tb-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--tb-ink-dim);
+}
+
+@media (min-width: 1024px) {
+  .tb-label {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Body copy stays Inter, with slightly negative tracking at reading sizes. */
+.tb-body {
+  letter-spacing: 0;
+  line-height: 1.65;
+  color: var(--tb-ink-dim);
+}
+
+.tb-gradient-text {
+  background: none;
+  color: var(--tb-cyan);
+}
+
+/* ---------- ambience ---------- */
+
+.tb-grid {
+  background-image:
+    linear-gradient(to right, var(--tb-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--tb-grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.tb-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+.tb-aurora {
+  background: var(--tb-aurora-bg);
+  animation: tb-aurora-drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes tb-aurora-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-2%, 1.5%, 0) scale(1.06); }
+  100% { transform: translate3d(2%, -1.5%, 0) scale(1.02); }
+}
+
+@property --tb-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes tb-angle {
+  to { --tb-angle: 360deg; }
+}
+
+/* Animated gradient border: rotating conic masked to a 1px ring. */
+.tb-beam {
+  position: relative;
+  isolation: isolate;
+}
+
+.tb-beam::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--tb-angle, 0deg),
+    transparent 0%,
+    var(--tb-glow) 10%,
+    transparent 28%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  z-index: -1;
+  animation: tb-angle 4s linear infinite;
+}
+
+.tb-beam:hover::before,
+.tb-beam[data-active="true"]::before {
+  opacity: 1;
+}
+
+/* Dashed value-flow lines between engine stages. */
+@keyframes tb-dash {
+  to { stroke-dashoffset: -240; }
+}
+
+.tb-flow {
+  stroke-dasharray: 5 9;
+  animation: tb-dash 5s linear infinite;
+}
+
+@keyframes tb-wire {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.tb-wire {
+  stroke-dasharray: 0.22 0.78;
+  animation: tb-wire 6s linear infinite;
+}
+
+@keyframes tb-pulse-ring {
+  0% { transform: scale(0.55); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.tb-pulse-ring {
+  transform-origin: center;
+  animation: tb-pulse-ring 3s ease-out infinite;
+}
+
+/* SVG defaults to transform-box: view-box, so `center` resolves to the middle
+ * of the viewBox rather than the shape's own box — the ring then pulses away
+ * from the node it belongs to, which is what put a stray circle beside the
+ * pipeline's first stage. */
+svg .tb-pulse-ring {
+  transform-box: fill-box;
+}
+
+@keyframes tb-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -13px, 0); }
+}
+
+.tb-float {
+  animation: tb-float 7s ease-in-out infinite;
+}
+
+@keyframes tb-marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.tb-marquee {
+  animation: tb-marquee 36s linear infinite;
+}
+
+.tb-mask-x {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+.tb-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+}
+
+/* ---------- 3D ---------- */
+
+.tb-scene {
+  perspective: 1600px;
+  perspective-origin: 50% 40%;
+}
+
+.tb-3d {
+  transform-style: preserve-3d;
+}
+
+/* ---------- scrollbar ---------- */
+
+.tb ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tb ::-webkit-scrollbar-thumb {
+  background: var(--tb-scrollbar);
+  border-radius: 999px;
+}
